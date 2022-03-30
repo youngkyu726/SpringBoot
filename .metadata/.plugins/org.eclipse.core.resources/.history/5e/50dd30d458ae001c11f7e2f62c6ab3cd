@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h3>타임리프에서 inline속성</h3>
+	
+	[[${vo}]]<br>
+	[[${arr}]]<br>
+	[[${name}]]<br>
+
+	<script th:inline="javascript">
+	
+		var aa = '[[${vo}]]';
+		var arr = '[[${arr}]]';
+		var name= '[[${name}]]';
+		
+		console.log(aa);
+		console.log(arr);
+		console.log(name);
+	</script>
+</body>
+</html>

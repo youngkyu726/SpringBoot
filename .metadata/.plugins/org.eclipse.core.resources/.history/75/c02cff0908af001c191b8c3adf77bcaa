@@ -1,0 +1,25 @@
+package com.simple.basic.command;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@Data
+@Builder
+@NoArgsConstructor
+public class ValidVO {
+	
+	/*1. 스프링부트 JAP라이브러리를 사용하면 기본타입은 null을 가질수 없기 때문에 값에 맵핑이 안됨.
+	     그래서 wrapper형으로 반드시 선언
+	  2. 유효성 검사에 필요한 멤버변수에 어노테이션 설정
+	  -  @Notnull : null을 허용하지 않는다 (String, Long 등등에 적용가능)
+	  -  @NotBlank : null, "", " " 허용하지 않음.
+	  -  @NotEmpty : bull, "" 허용하지 않음
+	*/
+	private String name;
+	private Integer salary;
+	private String phone;
+	private String email;
+}

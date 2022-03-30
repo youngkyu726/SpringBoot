@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h3>block문 link문</h3>
+	
+	<ul>
+		<th:block th:each="vo : ${list}">
+			<li>[[${vo}]]</li>
+		</th:block>
+	</ul>
+</body>
+</html>

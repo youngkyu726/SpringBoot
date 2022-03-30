@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<h3>타임리프 변수와 표현방법</h3>
+	
+	<h3 th:text="${'가나다'}"></h3>
+	<h3>[[${'가나다'}]]</h3>
+	
+	<h3 th:text="${1 == 1}"></h3>
+	<h3>[[${1 eq 3}]]</h3>
+	
+	<h3>[[${1 eq 3 and true}]]</h3>
+	
+	<h3>[[${'hello' + 'world'}]]</h3>
+	
+	<h3>[[${4.14 + 3}]]</h3>
+</body>
+</html>

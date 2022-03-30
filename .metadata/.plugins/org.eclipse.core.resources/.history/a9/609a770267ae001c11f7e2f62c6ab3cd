@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<!-- body를 조각내고 함수 선언 -->
+<body th:fragment="함수(section)">
+		
+	<h3>타임리프 템플릿으로 사용하기</h3>
+	
+	<header>
+		<h3>헤더에 대한 내용</h3>
+	</header>
+	
+	<section>
+		
+	</section>
+	
+	<footer>
+		<h3>푸터에 대한 내용</h3>
+	</footer>
+</body>
+</html>

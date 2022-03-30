@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<h3>th:each 반복문</h3>
+	
+	<ul>
+		<li th:each="vo : ${list}">
+			[[${vo}]]
+			[[${vo.a}]]
+			[[${vo.first}]]
+			[[${vo.last}]]
+			[[${vo.regdate}]]
+		</li>
+	</ul>
+	
+	<h3>반복문과 state객체</h3>
+	<ul>
+		<li th:each="vo, state : ${list}">
+			[[${vo}]]<br>
+			[[${state}]]<br>
+		
+		</li>
+	</ul>
+	
+	<hr>
+	<h3>반복문과 ifelse문</h3>
+	<ul>
+		<li th:each="vo : ${list}"> 
+			<sapn th:if="${vo.a % 2 == 0}">[[${'짝수'}]]</sapn>
+			<sapn th:unless="${vo.a % 2 == 0}">[[${'홀수'}]]</sapn>
+		</li>
+	</ul>
+	
+</body>
+</html>

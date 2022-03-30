@@ -1,0 +1,13 @@
+package com.simple.basic.memo;
+
+import org.springframework.stereotype.Service;
+
+@Service("memoService")
+public class MemoServiceImpl implements MemoService{
+
+	@Override
+	public String getTime() {
+		return null;
+	}
+
+}
