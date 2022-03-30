@@ -25,4 +25,18 @@ public class MemoController {
 		
 		model.addAttribute("time", time);
 	}
+	//화면처리
+	@GetMapping("/")
+	public String memoList() {
+		
+		return "memo/memoList";
+	}
+	//화면처리
+	@GetMapping("/memoWrite")
+	public String memoWrite() {
+		
+		return "memo/memoWrite";
+	}
+	
+	
 }
