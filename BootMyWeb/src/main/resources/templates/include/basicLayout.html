@@ -22,7 +22,6 @@
 	
 		<!--개인 -->
 	<link rel="stylesheet" type="text/css" th:href="@{/css/modal.css}" />
-	<script th:src="@{/js/modal.js}"></script>
 </head>
 <body>
 	<!-- 헤더 -->
@@ -30,7 +29,7 @@
         <div class="header">
             <h3 style="color: #fff; position: absolute; left: 20px; top: 27px;">Yk726 - 연습용 입니다. 이에 대한 무단 복제 및 배포를 원칙적으로 금합니다.
                 원본파일 및 핸드폰 촬영, 동영상강좌 녹화를 통한 무단 복제 · 배포하는 경우 저작권법 제136조에 의한 저작재산권 침해 죄에 해당될 수 있으니 각별한 주의 바랍니다.</h3>
-            <span class="admin_id"><b style="color:#7866c9;">관리자</b>홍길동 님</span>
+            <span class="admin_id"><b style="color:#7866c9;">관리자</b>[[${session.userVO} != null ? ${session.userVO.id} : '테스트']] 님</span>
         </div>
 
     </header>
@@ -42,8 +41,8 @@
             <li class="sub_menu_toggle">
                 <a href="#">- 상품관리(예제)</a>
                 <ul class="sub_menu ">
-                    <li><a href="#">-상품등록</a></li>
-                    <li><a href="#">-상품조회 / 수정</a></li>
+                    <li><a href="/product/productReg">-상품등록</a></li>
+                    <li><a href="/product/productList">-상품조회 / 수정</a></li>
                     <li><a href="#">-하단메뉴</a></li>
                 </ul>
             </li>
@@ -108,13 +107,13 @@
                 </ul>
                 <p>
                     <strong>(주)Yk726</strong>
-                    <span>(주소는 비밀)</span>
+                    <span>(양천구 목동)</span>
                     <span>대표이사 : YK726(KANG)</span>
-                    <span>사업자등록번호 : 비밀</span>
-                    <span>통신판매업신고번호 : 2018-성남분당B-0004</span>
+                    <span>사업자등록번호 : 19970726</span>
+                    <span>통신판매업신고번호 : 2022-양천구 목동B-0004</span>
                     <span>사업자정보확인</span>
                     <br />
-                    <span>문의전화 : 비밀 (평일 09:00-18:00, 유료)</span>
+                    <span>문의전화 : 0726 (평일 09:00-18:00, 유료)</span>
                     <span>이메일 : boylk726@naver.com</span>
                     <span>호스팅서비스사업자 : (주)AWS</span>
                     <span>© Yk726 Entertainment Corp.</span>
@@ -125,6 +124,34 @@
     </footer>
 	
 </body>
+<!-- 메뉴하이라이팅 -->
+<script th:inline="javascript">
+	//console.log(JSON.parse('[[${menu}]]'));
+	//1. sub_menu_toggle > a.sub_menu_select 클래스가 들어가야된다
+	//2. sub_menu_클래스에 display:block이 들어가야한다
+	//3. sub_menu > a.on 이 들어가면 해당메뉴가 활성화된다
+	
+	//기존태그가 가지고 있는 속성들을 전부 제거 -> 
+	//menu를 가지고 있는 a태그에 값을 제어해야한다.
+	
+	var menu = (JSON.parse('[[${menu}]]')); //포스트 핸들러에서 넘어온 menu값
+	$(function(){ 
+		//console.log($(".sub_menu a"));
+		$(".sub_menu a").each(function(index, val) {
+			//console.log(index, val, this);
+			//console.log($(val));
+			
+			if( $(val).attr("href") == menu){
+				//클래스 제어 문법
+				$(val).addClass("on");//on추가 (3번)
+				$(val).closest("ul").css("display", "block");//sub_menu클래스에 css제어 (2번)
+				$(val).closest("ul").prev().addClass("sub_menu_select"); //(1번)
+			}
+				
+		});
+	});
+</script>
+
 </th:block>
 
 

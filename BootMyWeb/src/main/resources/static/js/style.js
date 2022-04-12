@@ -101,16 +101,45 @@ function getCategory_List(e) {
 	if(obj.category_lv == 1 || obj.category_lv == 2) {
 		console.log('1lv');
 		$().loading(); //로딩
+		
 		$(e.currentTarget).category_remove(); //이전 카테고리삭제
 
 		//////////////////////////////////////////////////
-		//비동기콜백에서 category_create() 호출
+		//비동기콜백에서 category_create() 호출		
 		//비동기호출후 category_set() 호출
-		category_create(); //다음 카테고리생성
-		//////////////////////////////////////////////////
-
+		//주소/값/값/값
 		
+		//console.log(obj);
+		
+		$.ajax({
+			type: "get",
+			url: "../getCategoryChild/" + obj.group_id + "/" + obj.category_lv + "/" + obj.category_detail_lv,
+			//data:
+			//contentType:
+			dataType: "json",
+			success: function(data) {
+				
+				category_create(data); //응답받은 데이터를 카테고리 생성함수에 전달
+				
+			},
+			error: function(error, status) {
+				alert("카테고리 조회에 실패했습니다. 관리자에게 문의하세요");
+			}
+		})
+		
+		
+		
+		//category_create(); //다음 카테고리생성
+		//////////////////////////////////////////////////
 	} 
+	
+	//클릭한 태그의 group_id, category_id히든에 숨김처리
+	//console.log( $(e.target).data("set").group_id )
+	//console.log( $(e.target).data("set").category_id )
+	//
+	
+	$(e.target).category_set();
+	
 	
 }
 //카테고리세팅
@@ -129,11 +158,11 @@ $.fn.category_remove = function() {
 function category_create(data) {
 
 	//예시데이터
-	var data = [
-	 {category_lv: 2, group_id: 'B', category_detail_nm: '값선택', category_detail_parent_nm: '값선택'},
-	 {category_lv: 2, group_id: 'B', category_detail_nm: '값선택', category_detail_parent_nm: '값선택'},
-	 {category_lv: 2, group_id: 'B', category_detail_nm: '값선택', category_detail_parent_nm: '값선택'}
-  ];
+	//var data = [
+	// {category_lv: 2, group_id: 'B', category_detail_nm: '값선택', category_detail_parent_nm: '값선택'},
+	// {category_lv: 2, group_id: 'B', category_detail_nm: '값선택', category_detail_parent_nm: '값선택'},
+	// {category_lv: 2, group_id: 'B', category_detail_nm: '값선택', category_detail_parent_nm: '값선택'}
+    //];
 
 	var category = "";
 	category += '<ul class="categoryList" style="position: relative;" onclick="getCategory_List(event);" >';
@@ -152,5 +181,6 @@ $.fn.loading = function() {
 		$(".loading").css({display: "none"});
 	}, 1000);
 }
+
 
 

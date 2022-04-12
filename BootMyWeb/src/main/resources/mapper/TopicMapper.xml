@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yk726.myweb.topic.TopicMapper">
+	<insert id="regist">
+		insert into TOPIC(topic_regdate,
+						  topic_id,
+						  topic_title,
+						  topic_content)
+		values(#{topic_regdate},
+		       #{topic_id},
+			   #{topic_title},
+			   #{topic_content})
+	</insert>
+	
+	<select id="getList" resultType="TopicVO">
+		select * from TOPIC
+		where topic_id = 'admin'
+		order by topic_bno desc
+	</select>
+	
+	<select id="getList1" resultType="TopicVO">
+		select * from TOPIC
+	</select>
+	
+	<select id="getModify" resultType="TopicVO">
+		select * from TOPIC
+		where topic_bno = #{topic_bno}
+	</select>
+	
+	<select id="getDetail" resultType="TopicVO">
+		select * from TOPIC
+		where topic_bno = #{topic_bno}
+	</select>
+	
+	<update id="update">
+		update TOPIC
+		set topic_regdate = #{topic_regdate},
+			topic_id = #{topic_id},
+			topic_title = #{topic_title},
+			topic_content = #{topic_content}
+		where topic_bno = #{topic_bno}
+	</update>
+	
+		<delete id="delete">
+		delete from TOPIC
+		where topic_bno = #{topic_bno}
+	</delete>
+</mapper>

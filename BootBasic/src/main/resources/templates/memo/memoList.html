@@ -17,19 +17,19 @@
 			</tr>
 			
 			<!-- 반복문으로 처리해주세요 -->						
-			<tr >
-				<td></td>
+			<tr th:each="vo : ${list}">
+				<td>[[${vo.mno}]]</td>
 				
 				<!-- if~else로 처리해주세요 -->
-				<td >비밀글입니다</td>
-				<td >memo의 내용출력</td>
+				<td th:if="${vo.secret} == 'y'">비밀글입니다</td>
+				<td th:unless="${vo.secret} == 'y'">[[${vo.memo}]]</td>
 				
-				<td></td>
-				<td></td>
+				<td>[[${vo.phone}]]</td>
+				<td>[[${vo.secret}]]</td>
 			</tr>
 			
 	</table>
 	
-	<a href="##">메모쓰기</a>
+	<a href="memoWrite">메모쓰기</a>
 </body>
 </html>

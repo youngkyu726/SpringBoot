@@ -10,4 +10,10 @@ class BootMyWebApplicationTests {
 	void contextLoads() {
 	}
 
+	public int test() {
+		
+		System.out.println("1");
+		
+		return 6;
+	}
 }
